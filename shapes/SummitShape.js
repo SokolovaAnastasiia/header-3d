@@ -1,9 +1,10 @@
-import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader.js';
+// import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader.js';
+import { OBJLoader } from 'three/addons/loaders/OBJLoader.js';
 import { scene } from '../sceneSetup.js';
 
 // Загружаем модель
 const loader = new OBJLoader();
-const summitShapePath = '../models/SummitShape.obj';
+const summitShapePath = './models/SummitShape.obj';
 
 export let summitShape = null;
 
