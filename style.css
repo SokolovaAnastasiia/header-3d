@@ -1,0 +1,23 @@
+/* Убираем отступы, чтобы не было полос */
+html, body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none; /* Убираем фон, если он есть */
+}
+
+/* Убедимся, что canvas растянут на весь экран */
+canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: block;
+  z-index: -1; /* Canvas выше градиента, но под фигурами */
+}

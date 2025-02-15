@@ -12,7 +12,7 @@ loader.load(
     summitShapePath,
     (obj) => {
         summitShape = obj;
-        summitShape.scale.set(0.6, 0.6, 0.6); // При необходимости масштабируем модель
+        summitShape.scale.set(0.8, 0.8, 0.8); // При необходимости масштабируем модель
         scene.add(summitShape);
     },
     undefined,

@@ -6,7 +6,7 @@ const geometry = new THREE.BoxGeometry(2, 2, 2);
 
 // Создание материала
 const material = new THREE.MeshPhongMaterial({
-    color: 0x0077ff,
+    color: 0xFFFFFF,
 });
 
 // Создание формы
