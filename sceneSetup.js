@@ -12,7 +12,7 @@ camera.position.z = 12;
 // Создаем WebGLRenderer
 export const renderer = new THREE.WebGLRenderer({ antialias: true });
 renderer.setSize(window.innerWidth, window.innerHeight);
-document.body.appendChild(renderer.domElement);
+document.getElementById('header-background').appendChild(renderer.domElement);
 
 // === Создаем анимированный градиентный фон ===
 
@@ -27,15 +27,15 @@ const gradientMaterial = new THREE.ShaderMaterial({
     }
   `,
   fragmentShader: `
+    precision highp float;
     uniform float uTime;
-    
+
     void main() {
         vec2 uv = gl_FragCoord.xy / vec2(1920.0, 1080.0); // Нормализуем координаты
-        vec3 color1 = vec3(0.9137, 0.7569, 0.9412); // #FCE8FF (ещё более мягкий розовый)
-        vec3 color2 = vec3(0.89, 0.91, 0.94); // #E4E9F0 (новый фиолетовый)
+        vec3 color1 = vec3(0.9137, 0.7569, 0.9412); // #FCE8FF (розовый)
+        vec3 color2 = vec3(0.89, 0.91, 0.94); // #E4E9F0 (фиолетовый)
 
-        // Изменяем направление градиента (вместо uv.y добавляем uv.x для диагонали)
-        float mixFactor = uv.y - uv.x + sin(uTime) * 0.3;
+        float mixFactor = smoothstep(0.0, 1.0, uv.y - uv.x + sin(uTime * 2.0) * 0.9);
         vec3 gradient = mix(color1, color2, mixFactor);
 
         gl_FragColor = vec4(gradient, 1.0);
@@ -54,7 +54,7 @@ scene.add(bgMesh);
 function animate() {
   requestAnimationFrame(animate);
   
-  gradientMaterial.uniforms.uTime.value += 0.002; // Замедляем анимацию в 2 раза
+  gradientMaterial.uniforms.uTime.value += 0.003; // Замедляем анимацию в 2 раза
   renderer.render(scene, camera);
 }
 

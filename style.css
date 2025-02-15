@@ -1,23 +1,30 @@
-/* Убираем отступы, чтобы не было полос */
 html, body {
-  height: 100%;
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: none; /* Убираем фон, если он есть */
+  margin: 0px;
+  padding: 0px;
 }
 
-/* Убедимся, что canvas растянут на весь экран */
-canvas {
+/* Стили для контейнера хедера */
+#header {
+  position: relative;
+  width: 100%;
+  height: 600px; /* Высота хэдера */
+  overflow: hidden; /* Обрезаем лишнее */
+}
+
+/* Стили для фона WebGL */
+#header-background {
   position: absolute;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* Чтобы canvas не блокировал взаимодействие */
+}
+
+/* Canvas теперь не занимает весь экран */
+canvas {
+  position: absolute;
+  width: 100%;
+  height: 100%;
   display: block;
-  z-index: -1; /* Canvas выше градиента, но под фигурами */
 }

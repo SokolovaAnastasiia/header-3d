@@ -14,6 +14,7 @@ window.addEventListener('resize', () => {
     updateShapePositions(camera);
 });
 
+
 // Инициализация
 updateShapePositions(camera);
 animate();

@@ -28,7 +28,7 @@ export function animate() {
 
         // Вращение модели
         summitShape.rotation.x += 0.001;
-        summitShape.rotation.y += 0.001;
+        summitShape.rotation.y += 0.00;
     }
 
     renderer.render(scene, camera);
