@@ -1,4 +1,3 @@
-// import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader.js';
 import { OBJLoader } from 'three/addons/loaders/OBJLoader.js';
 import { scene } from '../sceneSetup.js';
 
