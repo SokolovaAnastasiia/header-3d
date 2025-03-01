@@ -1,5 +1,5 @@
 import { summitShape } from '../shapes/SummitShape.js';
-import { mediaShape } from '../shapes/Shape.js';
+import { mediaShape } from '../shapes/shape.js';
 
 export function updateShapePositions(camera) {
     const header = document.getElementById('header');
