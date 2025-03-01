@@ -1,5 +1,5 @@
 import { renderer, camera, scene } from '../sceneSetup.js';
-import { mediaShape } from '../shapes/Shape.js';
+import { mediaShape } from '../shapes/shape.js';
 import { summitShape } from '../shapes/SummitShape.js';
 import { mouseX, mouseY, movementFactor } from './mouseEvents.js';
 import { updateShapePositions } from './updatePositions.js';
