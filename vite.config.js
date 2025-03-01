@@ -1,9 +1,12 @@
 import { defineConfig } from 'vite';
 
 export default defineConfig({
-  base: '/header-3d/',
-  publicDir: 'public',
+  base: '/header-3d/', // Убедись, что base правильный для GitHub Pages
+  publicDir: 'public', // publicDir остаётся для моделей
   server: {
-    open: true, // Открывает браузер при запуске
+    open: true, // Автооткрытие браузера
+  },
+  build: {
+    emptyOutDir: true, // Очистка dist перед билдом
   },
 });
