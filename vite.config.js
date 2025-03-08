@@ -7,6 +7,5 @@ export default defineConfig({
     open: true, // Автооткрытие браузера
   },
   build: {
-    emptyOutDir: true, // Очистка dist перед билдом
   },
 });

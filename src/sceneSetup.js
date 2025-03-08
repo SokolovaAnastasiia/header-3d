@@ -1,5 +1,6 @@
 import * as THREE from 'three';
 
+
 // Создаем сцену
 export const scene = new THREE.Scene();
 
