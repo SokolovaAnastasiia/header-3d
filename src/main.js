@@ -5,16 +5,28 @@ import { animate } from './utils/animation.js';
 
 // Инициализация обработчиков и функций
 initMouseEvents(renderer);
+updateShapePositions(camera);
 
-// Обновление при изменении размера окна
+renderer.setSize(header.clientWidth, header.clientHeight);
+
+    // Update camera aspect ratio
+camera.aspect = header.clientWidth / header.clientHeight;
+camera.updateProjectionMatrix();
+
 window.addEventListener('resize', () => {
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    camera.aspect = window.innerWidth / window.innerHeight;
+    const header = document.getElementById('header');
+    if (!header) return;
+
+    // Update renderer to match header size
+    renderer.setSize(header.clientWidth, header.clientHeight);
+
+    // Update camera aspect ratio
+    camera.aspect = header.clientWidth / header.clientHeight;
     camera.updateProjectionMatrix();
-    updateShapePositions(camera);
 });
 
 
 // Инициализация
 updateShapePositions(camera);
 animate();
+

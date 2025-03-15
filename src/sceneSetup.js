@@ -32,16 +32,22 @@ const gradientMaterial = new THREE.ShaderMaterial({
     uniform float uTime;
 
     void main() {
-        vec2 uv = gl_FragCoord.xy / vec2(1920.0, 1080.0); // Нормализуем координаты
-        vec3 color1 = vec3(0.9137, 0.7569, 0.9412); // #FCE8FF (розовый)
-        vec3 color2 = vec3(0.89, 0.91, 0.94); // #E4E9F0 (фиолетовый)
+        vec2 uv = gl_FragCoord.xy / vec2(1920.0, 1080.0); // Normalize coordinates
+        vec3 color1 = vec3(0.753, 0.886, 1.0); // #C0E2FF (soft pastel blue)
+        vec3 color2 = vec3(0.933, 0.933, 0.933); // #EEEEEE (soft light gray)
 
-        float mixFactor = smoothstep(0.0, 1.0, uv.y - uv.x + sin(uTime * 2.0) * 0.9);
+        // Add some randomness to smooth out banding (dithering effect)
+        float noise = fract(sin(dot(uv, vec2(12.9898, 78.233))) * 43758.5453);
+        noise = (noise - 0.5) * 0.06; // Small noise for better blending
+
+        // Adjust the smoothness and animation of the gradient
+        float mixFactor = smoothstep(0.0, 1.0, uv.y - uv.x + sin(uTime * 0.5) * 1.2 + noise);
         vec3 gradient = mix(color1, color2, mixFactor);
 
         gl_FragColor = vec4(gradient, 1.0);
     }
   `,
+  
   transparent: true
 });
 
@@ -62,12 +68,12 @@ function animate() {
 animate();
 
 // Добавляем освещение
-const directionalLight = new THREE.DirectionalLight(0xFCE8FF, 1.5);
-directionalLight.position.set(5, 5, 5);
+const directionalLight = new THREE.DirectionalLight(0xEEEEEE, 2.5);
+directionalLight.position.set(3, 3, 3);
 scene.add(directionalLight);
 
-const ambientLight = new THREE.AmbientLight(0xFCE8FF, 2.0);
+const ambientLight = new THREE.AmbientLight(0xEEEEEE, 1.0);
 scene.add(ambientLight);
 
-const hemiLight = new THREE.HemisphereLight(0xFCE8FF, 0xFCE8FF, 0.5);
+const hemiLight = new THREE.HemisphereLight(0xEEEEEE, 0xEEEEEE, 2.0);
 scene.add(hemiLight);
